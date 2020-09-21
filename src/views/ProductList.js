@@ -6,7 +6,7 @@ import HeaderComponent from "../components/HeaderComponent";
 import MultiSelectComponent from "../components/MultiSelectComponent";
 import {ListLayout, TableLayout, Cell, HeaderCell} from "../components/StyledComponent";
 
-const List = ({cartItems, setCartItems}) => {
+const ProductList = ({cartItems, setCartItems}) => {
     
     const [list, setList] = useState({});
 
@@ -21,7 +21,7 @@ const List = ({cartItems, setCartItems}) => {
     };
 
     return (
-        <ListLayout>
+        <ListLayout data-testid="productList">
             <HeaderComponent cartItems={cartItems}/>
             <TableLayout>
                 <HeaderCell>{i18n.image}</HeaderCell>
@@ -46,6 +46,7 @@ const List = ({cartItems, setCartItems}) => {
                             <Cell 
                                 isAction={true} 
                                 isAddedToCart={isAddedToCart} 
+                                data-testid={item.productId}
                                 onClick={() => handleAddToCart(item.productId)}>
                                 {isAddedToCart ? i18n.added_to_cart : i18n.add_to_cart}
                             </Cell>
@@ -57,4 +58,4 @@ const List = ({cartItems, setCartItems}) => {
     )
 }
 
-export default List;
+export default ProductList;

@@ -7,7 +7,7 @@ const HeaderComponent = ({cartItems}) => {
 
     useEffect(() => {
         var elmnt = document.getElementById("root");
-        elmnt.scrollIntoView();
+        elmnt && elmnt.scrollIntoView();
     }, []);
     
     let history = useHistory();

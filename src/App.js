@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import List from "./views/List";
+import ProductList from "./views/ProductList";
 import Cart from "./views/cart/Cart";
 import Orders from "./views/Orders";
 import {AppLayout} from "./components/StyledComponent";
@@ -15,7 +15,7 @@ function App() {
   const [cartItems, setCartItems] = useState({});
 
   return (
-    <AppLayout>
+    <AppLayout data-testid="app">
       <Router>
         <Switch>
           <Route path="/cart">
@@ -25,7 +25,7 @@ function App() {
             <Orders cartItems={cartItems} />
           </Route>
           <Route path="/">
-            <List cartItems={cartItems} setCartItems={setCartItems} />
+            <ProductList cartItems={cartItems} setCartItems={setCartItems} />
           </Route>
         </Switch>
       </Router>

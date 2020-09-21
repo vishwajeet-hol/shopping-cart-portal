@@ -7,7 +7,7 @@ import {ListLayout, SubHeader, TableLayout, Cell} from "../components/StyledComp
 const OrderConfirmation = ({cartItems}) => {
     
     return (
-        <ListLayout>
+        <ListLayout data-testid="orders">
             <HeaderComponent cartItems={cartItems}/>
             <SubHeader marginTop={"20px"}>{i18n.my_orders} ({orders.length})</SubHeader>
             <TableLayout>

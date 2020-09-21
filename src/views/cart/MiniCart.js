@@ -13,7 +13,7 @@ const MiniCart = ({cartItems}) => {
     };
     
     return (
-        <MiniCartLayout>
+        <MiniCartLayout data-testid="miniCart">
             <SubHeader>{i18n.price_details}</SubHeader>
             <div className="mini-cart-item">
                 <div>{i18n.price} ({Object.keys(cartItems).length} {i18n.items})</div>
