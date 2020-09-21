@@ -1,24 +1,24 @@
 This is shopping cart portal project.
 
-It contain mainly 3 pages - Home page, Cart page and Orders page. I have attched screenshots of these pages in screenshots folder, please refer.
+***It contain mainly 3 pages - Home page, Cart page and Orders page. I have attched screenshots of these pages in screenshots folder, please refer.***
 
-On home page, user can add mupltiple items to cart. He can select multiple quantity of a item as well.
+*** On home page ***, user can add mupltiple items to cart. He can select multiple quantity of a item as well.
 
-On cart page, user can see all products that are added to cart. He can remove item from cart, also can change quanity of added products. Total price of the cart is always up-to-date with cart items.
+*** On cart page ***, user can see all products that are added to cart. He can remove item from cart, also can change quanity of added products. Total price of the cart is always up-to-date with cart items.
 
-On orders page, user can see his past orders. These orders can be sorted, based on price and date.
+*** On orders page ***, user can see his past orders. These orders can be sorted, based on price and date.
 
 
-Please note:
+**Please note**
 
 I have created mock folder in repository, which contains mock data. 
 This data should come from web service later.
 
-For adding more products to the list, please refer MockedProductList.js. Please check note added in this file.
+For ***adding more products*** to the list, please refer *MockedProductList.js.* ***Please check note added in this file.***
 
-For adding more past orders, please refer MockedOrders.js
+For ***adding more past orders***, please refer *MockedOrders.js*
 
-For changing delivery address, please refer MockedUserDetails.js
+For ***changing delivery address***, please refer *MockedUserDetails.js*
 
 
 ## Available Scripts
