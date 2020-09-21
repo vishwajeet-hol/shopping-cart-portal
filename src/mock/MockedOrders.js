@@ -13,18 +13,18 @@ export const orders = [
         currency: 'Rs.',
         quantity: 2,
         status: 'Delivered',
-        date: 'Sept 15, 2020'
+        date: 'Jan 8 2020 08:00:00 AM'
     },
     {
         orderId: '9000-B',
-        productId: '8',
-        name: 'iphone 11 Pro',
-        imgUrl: 'https://png.pngtree.com/png-clipart/20190922/original/pngtree-planner-application-template-for-mobile-phone-png-image_4774066.jpg',
-        price: '100000',
+        productId: '1',
+        name: 'Samsumg AS120',
+        imgUrl: 'https://png.pngtree.com/png-clipart/20200727/original/pngtree-blue-paper-cut-style-background-2020-new-year-wishes-mobile-phone-png-image_5307629.jpg',
+        price: '14000',
         currency: 'Rs.',
         quantity: 1,
         status: 'Cancelled',
-        date: 'Aug 05, 2020'
+        date: 'Mar 8 2012 08:00:00 AM'
     },
     {   
         orderId: '8000-Z',
@@ -35,6 +35,6 @@ export const orders = [
         currency: 'Rs.',
         quantity: 1,
         status: 'Returned',
-        date: 'Feb 26, 2020'
+        date: 'Dec 8 2019 08:00:00 AM'
     }
 ]

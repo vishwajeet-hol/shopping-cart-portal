@@ -23,5 +23,11 @@ export default {
     'order_placed_successfully': 'Order has been placed successfully',
     'order_placed_alert': 'Order has been placed successfully for {arg} item(s)',
     'my_orders': 'My Orders',
-    'on': 'on',
+    'date': 'Date',
+    'status': 'Status',
+    'sort_by': 'Sort By:',
+    'lowest_price_first': 'Lowest Price First',
+    'highest_price_first': 'Highest Price First',
+    'recent_orders_first': 'Recent Orders First',
+    'old_orders_first': 'Old Orders First',
 }

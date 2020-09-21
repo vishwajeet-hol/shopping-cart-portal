@@ -140,7 +140,7 @@ export const TableLayout = styled.div.attrs({
   className: "table-layout"
 })`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(${props => props.columns || 4}, 1fr);
   margin-top: 40px;
   
  }
@@ -195,6 +195,18 @@ export const Cell = styled.div.attrs({
       height: 120px
     }
    }
+  `;
+
+export const SortLayout = styled.div.attrs({
+  className: "sort-layout"
+})`
+  display: flex;
+  place-content: flex-end;
+  padding: 20px 40px 0px;
+  
+  label {
+    padding-right: 20px;
+  }
   `;
 
 export const Tile = styled.div.attrs({
