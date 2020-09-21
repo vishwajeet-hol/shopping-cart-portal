@@ -2,13 +2,14 @@ import React, {Fragment} from 'react';
 import i18n from "../i18n";
 import {orders} from "../mock/MockedOrders";
 import HeaderComponent from "../components/HeaderComponent";
-import {ListLayout, TableLayout, Cell} from "../components/StyledComponent";
+import {ListLayout, SubHeader, TableLayout, Cell} from "../components/StyledComponent";
 
 const OrderConfirmation = ({cartItems}) => {
     
     return (
         <ListLayout>
             <HeaderComponent cartItems={cartItems}/>
+            <SubHeader marginTop={"20px"}>{i18n.my_orders} ({orders.length})</SubHeader>
             <TableLayout>
                 {Object.values(orders).map((item)=> {
                     return (

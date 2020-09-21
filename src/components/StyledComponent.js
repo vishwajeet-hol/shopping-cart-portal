@@ -125,6 +125,7 @@ export const SubHeader = styled.div.attrs({
   font-weight: 900;
   padding-left: 20px;
   position: ${props => props.isSticky ? 'sticky' : 'static'};
+  margin-top: ${props => props.marginTop || '' };
   bottom: 0;
 
   .right {
