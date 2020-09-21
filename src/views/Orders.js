@@ -27,6 +27,7 @@ const OrderConfirmation = ({cartItems}) => {
         const clonedOrders = [...orderList];
         const sortedOrderlist = clonedOrders.sort(SORT_ORDER_FUN[sortOrder]);
         setOrderList(sortedOrderlist);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sortOrder]);
 
     const onOrderChange = (event) => {
