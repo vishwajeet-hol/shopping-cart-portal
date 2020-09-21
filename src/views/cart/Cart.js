@@ -1,65 +1,42 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import i18n from '../../i18n';
 import MiniCart from "./MiniCart";
-import {VIEW} from "../../consts";
-import {Header, GridLayout, CartLayout, EmptyCartLayout, Tile} from "../../components/StyledComponent";
+import { useHistory } from "react-router-dom";
+import HeaderComponent from "../../components/HeaderComponent";
+import MultiSelectComponent from "../../components/MultiSelectComponent";
+import {userDetails} from "../../mock/MockedUserDetails";
+import {
+    SubHeader, 
+    GridLayout, 
+    CartLayout, 
+    EmptyCartLayout, 
+    Tile
+} from "../../components/StyledComponent";
 
-const Cart = (props) => {
-    // Variables
-    const {cartItems, setCartItems, setView} = props;
+const Cart = ({cartItems, setCartItems}) => {
+
+    let history = useHistory();
     const isCartEmpty = Object.keys(cartItems).length === 0;
-    
-    // State variables
     const [isOrderPlaced, setIsOrderPlaced] = useState(false);
 
-    // Effects
     useEffect(() => {
         isOrderPlaced && setCartItems({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOrderPlaced]);
 
-    useEffect(() => {
-        var elmnt = document.getElementById("root");
-        elmnt.scrollIntoView();
-    }, []);
-
-    // Event handlers
     const onRemoveItem = (productId) => {
         const clonedCartItems = {...cartItems};
         delete clonedCartItems[productId];
         setCartItems(clonedCartItems);
     }
 
-    const onMinus = (productId) => {
-        if (cartItems[productId].quantity > 1) {
-            setCartItems((prevCartItems) => {
-                return {
-                    ...prevCartItems, 
-                    [productId]: {...cartItems[productId], quantity: cartItems[productId].quantity - 1}
-                }
-            });
-        } else {
-            onRemoveItem(productId);
-        }
-    }
-
-    const onPlus = (productId) => {
-        setCartItems((prevCartItems) => {
-            return {
-                ...prevCartItems, 
-                [productId]: {...cartItems[productId], quantity: cartItems[productId].quantity + 1}
-            }
-        });
-    };
-
     const onContinueShopping = () => {
-        setView(VIEW.LIST);
         setIsOrderPlaced(false);
+        history.push("/");
     }
 
     const onSubmitOrder = () => {
         // hook to call actual web service with cart items data.
-        alert(i18n.order_placed_alert.replace('{arg}', Object.keys(cartItems).length));
         setIsOrderPlaced(true);
     };
 
@@ -72,14 +49,12 @@ const Cart = (props) => {
         );
     }
 
-    // Render
     return (
+        <Fragment>
+        <HeaderComponent cartItems={cartItems}/>
         <GridLayout>
-            <CartLayout>
-                <Header id="header">
-                    <div className="left">{i18n.cart} ({Object.keys(cartItems).length})</div>
-                    <div className="right" onClick={onContinueShopping}>{i18n.continue_shopping}</div>
-                </Header>
+            <CartLayout isCartEmpty={isCartEmpty}>
+                <SubHeader>{i18n.my_cart} ({Object.keys(cartItems).length})</SubHeader>
                 <Fragment>
                     {isCartEmpty && emptyCartView()}
                     {Object.values(cartItems).map((item) => {
@@ -90,25 +65,29 @@ const Cart = (props) => {
                                     <div className="item-info">
                                         <div className="name">{item.name}</div>
                                         <div className="price">{item.currency} {item.price}</div>
-                                        <div className="remove-item" onClick={() => onRemoveItem(item.productId)}>{i18n.remove_item}</div>
+                                        <div className="remove-item" 
+                                            onClick={() => onRemoveItem(item.productId)}>
+                                            {i18n.remove_item}
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="quantity">
-                                    <div className="minus" onClick={() => onMinus(item.productId)}>-</div>
-                                    <div className="current-quantity">{item.quantity}</div>
-                                    <div className="plus" onClick={() => onPlus(item.productId)}>+</div>
-                                </div>
+                                <MultiSelectComponent 
+                                    productId={item.productId}
+                                    cartItems={cartItems}
+                                    setCartItems={setCartItems}
+                                />
                             </Tile>
                         );
                     })}
                 </Fragment>
-                {!isCartEmpty && <Header isSticky={true}>
-                    <div className="left">{i18n.deliver_to}: {i18n.address}</div>
+                {!isCartEmpty && <SubHeader isSticky={true}>
+                    <div className="left">{i18n.deliver_to}: {userDetails.address}</div>
                     <div className="right" onClick={onSubmitOrder}>{i18n.place_order}</div>
-                </Header>}
+                </SubHeader>}
             </CartLayout>
             {!isCartEmpty && <MiniCart cartItems={cartItems}/>}
         </GridLayout>
+        </Fragment>
     )
 };
 

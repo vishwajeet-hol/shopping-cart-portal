@@ -1,4 +1,6 @@
 /**
+ * Mocked product list data.
+ * 
  * Please note:
  * If you are going to add more entries in this list, please maintain unique key and productId, 
  * you can refer existing entries to understand this.

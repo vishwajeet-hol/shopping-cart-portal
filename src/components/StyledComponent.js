@@ -5,6 +5,7 @@ export const AppLayout = styled.div.attrs({
 })`
   padding: 100px;
   background-color: #f1f3f6;
+  min-height: 100vh;
  }
 `;
 
@@ -20,7 +21,7 @@ export const CartLayout = styled.div.attrs({
   className: "cart-layout"
 })`
   grid-column-start: 1;
-  grid-column-end: 7;
+  grid-column-end: ${props => props.isCartEmpty ? 11 : 7};
   background-color: #fff;
  }
 `;
@@ -31,6 +32,7 @@ export const GridLayout = styled.div.attrs({
   border: 1px solid #f0f0f0;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  padding-top: 20px;
  }
 `;
 
@@ -62,7 +64,7 @@ export const MiniCartLayout = styled.div.attrs({
   background-color: #fff;
   height: 320px;
   position: sticky;
-  top: 0;
+  top: 120px;
 
   .mini-cart-item {
     display: flex;
@@ -84,7 +86,7 @@ export const Header = styled.div.attrs({
 })`
   font-size: 14px;
   text-transform: uppercase;
-  padding: 20px;
+  padding: 30px 40px 30px 20px;
   display: flex;
   justify-content: space-between;
   border: 1px solid #f0f0f0;
@@ -94,18 +96,44 @@ export const Header = styled.div.attrs({
   position: ${props => props.isSticky ? 'sticky' : 'static'};
   bottom: 0;
   top: 0;
+  padding-left: 20px;
 
-  .left {
-    padding: 10px 0px;
-  }
-  .right {
+  .left, .right {
     cursor: pointer;
-    border: 1px solid #fff;
-    padding: 10px;
+    border: 1px solid;
+    padding: 5px;
+  }
+
+  .middle{
+    font-size: 24px;
+    cursor: pointer;
   }
  }
 `;
 
+export const SubHeader = styled.div.attrs({
+  className: "sub-header"
+})`
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #f0f0f0;
+  background-color: #fb641b;
+  color: #fff;
+  font-weight: 900;
+  padding-left: 20px;
+  position: ${props => props.isSticky ? 'sticky' : 'static'};
+  bottom: 0;
+
+  .right {
+    cursor: pointer;
+    border: 1px solid;
+    padding: 5px;
+  }
+ }
+`;
 
 export const TableLayout = styled.div.attrs({
   className: "table-layout"
@@ -127,6 +155,29 @@ export const HeaderCell = styled.div.attrs({
  }
 `;
 
+export const MultiSelector = styled.div.attrs({
+  className: "mulit-selector"
+})`
+  display: flex;
+  padding-top: 20px;
+
+  .minus, .plus, .current-quantity {
+    border: 1px solid #c2c2c2;
+    width: ${props => props.cellWidth || '35px'};
+    height: ${props => props.cellHeight || '30px'};
+    text-align: center;
+    padding-top: 5px;
+    font-weight: 400;
+  }
+
+  .current-quantity {
+    width: ${props => props.cellWidth || '100px'};
+    margin: 0 10px;
+    font-weight: 700;
+  }
+}
+`;
+
 export const Cell = styled.div.attrs({
     className: "cell"
   })`
@@ -139,68 +190,50 @@ export const Cell = styled.div.attrs({
     color: ${props => props.isAction ? '#388e3c' : ''};
 
     .image {
-        width: 100px;
-        height: 100px;
+      width: 120px;
+      height: 120px
     }
    }
   `;
 
-  export const Tile = styled.div.attrs({
-    className: "tile"
-  })`
-    font-size: 16px;
+export const Tile = styled.div.attrs({
+  className: "tile"
+})`
+  font-size: 16px;
+  font-weight: 800;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  height: 300px;
+
+  .image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .item-details {
+    display: flex;
+  }
+
+  .item-info {
+    padding: 0px 50px;
+  }
+
+  .name {
+    padding-bottom: 20px;
     font-weight: 800;
-    padding: 20px;
-    border: 1px solid #f0f0f0;
-    height: 300px;
+  }
 
-    .image {
-      width: 200px;
-      height: 200px;
-    }
+  .price {
+    font-weight: 400;
+  }
 
-    .item-details, .quantity {
-      display: flex;
-    }
+  .remove-item {
+    padding-top: 50px;
+    font-weight: 200;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #fb641b;
+  }
 
-    .item-info {
-      padding: 0px 50px;
-    }
-
-    .name {
-      padding-bottom: 20px;
-      font-weight: 800;
-    }
-
-    .price {
-      font-weight: 400;
-    }
-
-    .remove-item {
-      padding-top: 50px;
-      font-weight: 200;
-      cursor: pointer;
-      text-decoration: underline;
-      color: #fb641b;
-    }
-
-    .quantity {
-      padding-top: 20px;
-    }
-
-    .minus, .plus, .current-quantity {
-      border: 1px solid #c2c2c2;
-      width: 35px;
-      height: 30px;
-      text-align: center;
-      padding-top: 5px;
-      font-weight: 400;
-    }
-
-    .current-quantity {
-      width: 100px;
-      margin: 0 10px;
-      font-weight: 700;
-    }
-   }
-  `;
+  }
+`;
